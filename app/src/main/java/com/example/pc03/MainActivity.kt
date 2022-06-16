@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val btnsincronizar= findViewById<Button>(R.id.btnSincronizar)
         btnsincronizar.setOnClickListener{
             makeconnection()
+            btnsincronizar.setEnabled(false)
         }
 
     }
@@ -35,12 +36,15 @@ class MainActivity : AppCompatActivity() {
                 val code = httpurlconn.responseCode
                 if (code!= 200){
                     throw IOException("ERROR $code")
+                }else{
+                    println("SE PUEDEEEEEE!!!!!")
                 }
+
                 val bufferedreader = BufferedReader(
                     InputStreamReader(httpurlconn.inputStream)
                 )
                 //CSV
-
+                TODO("FUNCION DESERIALIZAR CSV")
             }catch (ioexception : IOException){
                 Log.e(this.javaClass.name, ioexception.message.toString())
             } finally {
