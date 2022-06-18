@@ -8,7 +8,7 @@ import com.example.pc03.room.Models.PersonaRoom
 @Dao
 interface PersonaRoomDAO {
     @Query("SELECT * FROM PersonaRoom")
-    fun getPersonas() :List<PersonaRoom>
+    fun getallPersonas() :List<PersonaRoom>
 
     //SELECIONAR POR FECHAS
 

@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.example.pc03.models.Personas
+import com.example.pc03.room.AppDatabase
+import com.example.pc03.room.Models.PersonaRoom
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,13 +28,16 @@ class MainActivity : AppCompatActivity() {
             btnsincronizar.setEnabled(false)
         }
 
+        /*val btnVerdata = findViewById<Button>(R.id.btnVerdatos)
+        }*/
+
     }
 
     private fun makeconnection(){
         CoroutineScope(Dispatchers.IO).launch {
             var httpurlconn : HttpURLConnection?=null
             try {
-                val url = URL("https://www.datosabiertos.gob.pe/dataset/casos-positivos-por-covid-19-ministerio-de-salud-minsa")
+                val url = URL("https://files.minsa.gob.pe/s/eRqxR35ZCxrzNgr/download")
                 httpurlconn = url.openConnection() as HttpURLConnection
                 val code = httpurlconn.responseCode
                 if (code!= 200){
@@ -43,7 +49,29 @@ class MainActivity : AppCompatActivity() {
                 val bufferedreader = BufferedReader(
                     InputStreamReader(httpurlconn.inputStream)
                 )
-                //CSV
+                try {
+                    BufferedReader(bufferedreader).use { br->
+                        var line : String?
+                        while (br.readLine().also { line = it } != null){
+                            //val gest: gestorPersonas? = null
+                            //println(line)
+                            val list : List<String> = line?.split(";")!!.toList()
+                           // println(list)
+                            //println(list[0]+"RAAAAAAAAAAAAAAAAAA")
+                            val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
+                                list[5],list[6],list[7],list[8],list[9],null)
+                            AppDatabase.getInstance(this@MainActivity).getPersonasDao().insertPersonas(personInfo)
+                         //   gest?.guardarListPersonasRoom( ,list)
+
+                        //var result: List<String> = line!!.split(";")?.map { it.trim() }
+                            //result.forEach(println(it))
+                        }
+
+                    }
+                }catch (e : IOException){
+                    e.printStackTrace()
+                }
+
                 TODO("FUNCION DESERIALIZAR CSV")
             }catch (ioexception : IOException){
                 Log.e(this.javaClass.name, ioexception.message.toString())
@@ -52,44 +80,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*val connection = URL ("https://www.datosabiertos.gob.pe/dataset/casos-positivos-por-covid-19-ministerio-de-salud-minsa")
-        .openConnection() as HttpURLConnection
-
-    val data = connection.inputStream.bufferedReader().use { reader->
-
-    }*/
-    /*
-    private fun httpGet (myUrl: String?): String{
-        val inputstream : InputStream
-        val result : String
-
-        val url : URL =URL(myUrl)
-        val conn: HttpURLConnection = url.openConnection() as HttpURLConnection
-        conn.connect()
-        inputstream= conn.inputStream
-        if(inputstream!=null){
-            result= convertInputStream(inputstream)
-        }else{
-            result = "FUCCKKK"
-        }
-        return result
-    }
-
-    private fun convertInputStream(inputStream: InputStream): String {
-        val bufferedReader: BufferedReader? = BufferedReader(InputStreamReader(inputStream))
-
-        var line:String? = bufferedReader?.readLine()
-        var result:String = ""
-
-        while (line != null) {
-            result += line
-            line = bufferedReader?.readLine()
-        }
-
-        inputStream.close()
-        return result
-    }*/
-
 
 }
