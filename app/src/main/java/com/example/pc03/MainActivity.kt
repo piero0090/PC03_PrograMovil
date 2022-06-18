@@ -28,8 +28,14 @@ class MainActivity : AppCompatActivity() {
             btnsincronizar.setEnabled(false)
         }
 
-        /*val btnVerdata = findViewById<Button>(R.id.btnVerdatos)
-        }*/
+        val btnLimpiar = findViewById<Button>(R.id.btnLimpiar)
+        btnLimpiar.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+               AppDatabase.getInstance(this@MainActivity).getPersonasDao().borrarAll()
+            //AppDatabase.getInstance(this@MainActivity).clearAllTables()
+            }
+            btnsincronizar.setEnabled(true)
+        }
 
     }
 
@@ -52,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     BufferedReader(bufferedreader).use { br->
                         var line : String?
+                        /*
                         while (br.readLine().also { line = it } != null){
                             //val gest: gestorPersonas? = null
                             //println(line)
@@ -65,19 +72,24 @@ class MainActivity : AppCompatActivity() {
 
                         //var result: List<String> = line!!.split(";")?.map { it.trim() }
                             //result.forEach(println(it))
-                        }
+                        }*/
 
+                        for (i in 1..10000){
+                            br.readLine().also { line=it }
+                            val list : List<String> = line?.split(";")!!.toList()
+                            val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
+                                list[5],list[6],list[7],list[8],list[9],null)
+                            AppDatabase.getInstance(this@MainActivity).getPersonasDao().insertPersonas(personInfo)
+                        }
                     }
                 }catch (e : IOException){
                     e.printStackTrace()
                 }
-
-                TODO("FUNCION DESERIALIZAR CSV")
             }catch (ioexception : IOException){
                 Log.e(this.javaClass.name, ioexception.message.toString())
-            } finally {
+            } /*finally {
                 httpurlconn?.disconnect()
-            }
+            }*/
         }
     }
 

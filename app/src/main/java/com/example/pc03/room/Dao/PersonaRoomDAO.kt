@@ -1,6 +1,7 @@
 package com.example.pc03.room.Dao
 
 import androidx.room.Dao
+import androidx.room.DeleteTable
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.pc03.room.Models.PersonaRoom
@@ -14,4 +15,8 @@ interface PersonaRoomDAO {
 
     @Insert
     fun insertPersonas(persona: PersonaRoom)
+
+    @Query("DELETE FROM PersonaRoom")
+    fun borrarAll ()
+
 }

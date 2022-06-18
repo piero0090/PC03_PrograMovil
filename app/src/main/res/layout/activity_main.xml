@@ -4,44 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAF3EC"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnSincronizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#1921E2"
         android:text="Sincronizar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26999998"
-        android:backgroundTint="#1921E2"/>
+        app:layout_constraintVertical_bias="0.26999998" />
 
     <Button
         android:id="@+id/btnLimpiar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#1921E2"
         android:text="Limpiar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSincronizar"
-        app:layout_constraintVertical_bias="0.100000024"
-        android:backgroundTint="#1921E2"/>
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
         android:id="@+id/btnVerdatos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#1921E2"
         android:text="Ver data"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLimpiar"
-        app:layout_constraintVertical_bias="0.100000024"
-        android:backgroundTint="#1921E2"/>
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <TextView
         android:id="@+id/textView"
