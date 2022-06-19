@@ -51,6 +51,12 @@ class MainActivity : AppCompatActivity() {
             }
             btnsincronizar.setEnabled(true)
         }
+
+        //Boton VerData
+        val btnVerData = findViewById<Button>(R.id.btnVerdatos)
+        btnVerData.setOnClickListener {
+
+        }
     }
 
     private fun makeconnection(){

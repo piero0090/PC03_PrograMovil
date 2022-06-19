@@ -19,4 +19,7 @@ interface PersonaRoomDAO {
     @Query("DELETE FROM PersonaRoom")
     fun borrarAll ()
 
+
+
+
 }
