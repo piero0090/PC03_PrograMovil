@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         //Boton VerData
         val btnVerData = findViewById<Button>(R.id.btnVerdatos)
         btnVerData.setOnClickListener {
-
+            setContentView(R.layout.datatool)
         }
     }
 
