@@ -27,7 +27,7 @@ data class PersonaRoom(
     @ColumnInfo(name = "userid")
     val userid: String,
     @PrimaryKey(autoGenerate = true)
-    val id: Int?
+    val id: Int = 0
 
 
 

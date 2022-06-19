@@ -7,7 +7,7 @@ import com.example.pc03.room.Dao.PersonaRoomDAO
 import com.example.pc03.room.Models.PersonaRoom
 
 class gestorPersonas {
-    /*
+
     fun obtenerListaPersonasRoom(context: Context): List<Personas>{
         val daoPersonas: PersonaRoomDAO = AppDatabase.getInstance(
             context).getPersonasDao()
@@ -15,7 +15,7 @@ class gestorPersonas {
         println(listaPersonasRoom.size)
         val listaPersonas = listaPersonasRoom.map {
             Personas(it.fecha_corte, it.departamento, it.provincia, it.distrito, it.metodo,it.edad,
-                it.sexo, it.fecha_resultado, it.ubi_geo, it.id)
+                it.sexo, it.fecha_resultado, it.ubi_geo, it.userid)
         }
         return listaPersonas
     }
@@ -27,8 +27,8 @@ class gestorPersonas {
         personas.forEach{
             daoPersonas.insertPersonas(
                 PersonaRoom(it.fecha_corte, it.departamento, it.provincia, it.distrito, it.metodo,
-                    it.edad, it.sexo, it.fecha_resultado, it.ubi_geo, it.id)
+                    it.edad, it.sexo, it.fecha_resultado, it.ubi_geo, it.userid)
             )
         }
-    }*/
+    }
 }
