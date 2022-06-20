@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-      />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tviPersonaUserID"
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

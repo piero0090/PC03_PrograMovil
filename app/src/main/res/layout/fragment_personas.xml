@@ -9,7 +9,6 @@
         android:id="@+id/tviTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Personas"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

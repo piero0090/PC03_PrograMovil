@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import com.example.pc03.fragments.PersonasFragment
 import com.example.pc03.models.Personas
 import com.example.pc03.room.AppDatabase
 import com.example.pc03.room.Models.PersonaRoom
@@ -20,6 +21,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class MainActivity : AppCompatActivity() {
+    private val fragmentPersonas = PersonasFragment()
 
     private var progressbar: ProgressBar? =null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +56,11 @@ class MainActivity : AppCompatActivity() {
 
         //Boton VerData
         val btnVerData = findViewById<Button>(R.id.btnVerdatos)
+        val ft = supportFragmentManager.beginTransaction()
+        ft.add(R.id.fcvSecciones, fragmentPersonas)
+        ft.commit()
         btnVerData.setOnClickListener {
+            // Cargar el fragment por defecto
             setContentView(R.layout.datatool)
         }
     }
@@ -81,7 +87,9 @@ class MainActivity : AppCompatActivity() {
                             br.readLine().also { line=it }
                             val list : List<String> = line?.split(";")!!.toList()
                             val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
-                                list[5],list[6],list[7],list[8],list[9],null)
+                                list[5],list[6],list[7],list[8],list[9])
+                            /*val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
+                                list[5],list[6],list[7],list[8],list[9],null)*/
                             AppDatabase.getInstance(this@MainActivity).getPersonasDao().insertPersonas(personInfo)
                         }
                     }
