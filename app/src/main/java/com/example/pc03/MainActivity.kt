@@ -1,13 +1,13 @@
 package com.example.pc03
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
-import com.example.pc03.fragments.PersonasFragment
-import com.example.pc03.models.Personas
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.pc03.room.AppDatabase
 import com.example.pc03.room.Models.PersonaRoom
 import kotlinx.coroutines.CoroutineScope
@@ -15,13 +15,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
+
 class MainActivity : AppCompatActivity() {
-    private val fragmentPersonas = PersonasFragment()
+
 
     private var progressbar: ProgressBar? =null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,12 +57,10 @@ class MainActivity : AppCompatActivity() {
         //crear otro activity
         //Boton VerData
         val btnVerData = findViewById<Button>(R.id.btnVerdatos)
-        val ft = supportFragmentManager.beginTransaction()
-        ft.add(R.id.fcvSecciones, fragmentPersonas)
-        ft.commit()
         btnVerData.setOnClickListener {
-            // Cargar el fragment por defecto
-            //setContentView(R.layout.datatool)
+
+            val intent = Intent(this, VerData::class.java)
+            startActivity(intent)
         }
     }
 
@@ -83,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     BufferedReader(bufferedreader).use { br->
                         var line : String?
-                        for (i in 1..10000){
+                        for (i in 2..10000){
                            // progressBarComp.setVisibility(View.VISIBLE)
                             br.readLine().also { line=it }
                             val list : List<String> = line?.split(";")!!.toList()

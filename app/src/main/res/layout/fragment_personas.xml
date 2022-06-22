@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/tviTitulo"
         android:layout_width="wrap_content"
@@ -16,17 +21,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rviPersonas"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tviTitulo"
-        app:layout_constraintVertical_bias="1.0"
         tools:itemCount="5"
         tools:listitem="@layout/item_persona" />
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

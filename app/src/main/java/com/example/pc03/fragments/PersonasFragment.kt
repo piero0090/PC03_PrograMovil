@@ -19,7 +19,7 @@ class PersonasFragment: Fragment() {
     private lateinit var mRviPersonas: RecyclerView
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            activity?.title = "Personas"
+            //activity?.title = "Ver Data"
             setHasOptionsMenu(true)
         }
 
@@ -31,36 +31,11 @@ class PersonasFragment: Fragment() {
             return inflater.inflate(R.layout.fragment_personas, container, false)
         }
 
-       /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-            super.onCreateOptionsMenu(menu, inflater)
-            inflater.inflate(R.menu.menu_planetas, menu)
-        }*/
-
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             mRviPersonas = view.findViewById(R.id.rviPersonas)
 
-            //val listaPlanetas : List<Planeta> = GestorPlanetas().obtenerListaPlanetas()
-            /*GestorPlanetas().obtenerListaPlanetas {
-                val adapter = ListadoPlanetasAdapter(it) {
-                    Log.i("PlanetasFragment","Se hizo click en el planeta " + it.nombre);
-                }
-                mRviPlanetas.adapter = adapter
-            }*/
             val gestor = gestorPersonas()
-
-            /*GlobalScope.launch(Dispatchers.IO) {
-                // Defecto : Default -> Tareas de alto costo computacional
-                // IO : -> Tareas que no tinen costo alto pero tienen paradas
-                val lista = gestor.obtenerListaPlanetasCorutinas()
-
-                withContext(Dispatchers.Main) {
-                    val adapter = ListadoPlanetasAdapter(lista) {
-                        Log.i("PlanetasFragment","Se hizo click en el planeta " + it.nombre);
-                    }
-                    mRviPlanetas.adapter = adapter
-                }
-            }*/
 
             val sp = requireActivity().getSharedPreferences(
                 Constantes.NOMBRE_SP, Context.MODE_PRIVATE)
@@ -70,42 +45,41 @@ class PersonasFragment: Fragment() {
                     false)
                 var lista : List<Personas> = mutableListOf()
                 if (!estaSincronizado) {
-                    // Obtenemos la data del servicio externo
                     lista = withContext(Dispatchers.IO) {
                         gestor.obtenerListaPersonasRoom(requireActivity().applicationContext)
                     }
-
-                    // Guardamos los planetas obtenidos en el servicio en Room
-                    Log.d("PersonasFragment", lista.size.toString())
                     gestor.guardarListPersonasRoom(
                         requireActivity().applicationContext,
                         lista
                     )
+                    cargarListaPersonas(lista)
 
-                    /*gestor.guardarListaPlanetasFirebase(lista, {
-                        // Caso exito
-                        sp.edit().putBoolean(
-                            Constantes.SP_ESTA_SINCRONIZADO, true).commit()
-                        cargarListaPlanetas(lista)
-                    }){
-                        // Caso error guardado Firebase
-                        Toast.makeText(requireActivity(),
-                            "Error: ${it}", Toast.LENGTH_SHORT).show()
-                    }*/
                 } else {
-                    // Obtenemos la data de Room (base de datos interna)
-                    Log.d("PersonasFragment", "Room")
                     lista = gestor.obtenerListaPersonasRoom(
                         requireContext().applicationContext)
                     cargarListaPersonas(lista)
                 }
             }
+
+            /*
+            var lista1 : List<Personas> = mutableListOf()
+            var lista2 = mutableListOf<Personas>()
+            val temp = Personas ("1","2","3","4", "5"
+            , "6", "7", "8", "9", "10")
+
+            val temp2 = Personas ("1","2","3","4", "5"
+                , "6", "7", "8", "9", "10")
+
+            lista1
+            lista1.add(temp2)
+
+            cargarListaPersonas(lista1)
+            */
+
         }
 
         private fun cargarListaPersonas(lista: List<Personas>) {
-            val adapter = ListadoPersonasAdapter(lista) {
-               // Log.i("Se hizo click en " + it.nombre);
-            }
+            val adapter = ListadoPersonasAdapter(lista)
             mRviPersonas.adapter = adapter
         }
     }

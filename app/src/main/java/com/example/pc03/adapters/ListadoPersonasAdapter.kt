@@ -8,9 +8,8 @@ import com.example.pc03.R
 import com.example.pc03.gestorPersonas
 import com.example.pc03.models.Personas
 
-class ListadoPersonasAdapter (private val mListaPersonas : List<Personas>,
-    private val mOnItemClickListener : (personas: Personas) -> Unit)
-    : RecyclerView.Adapter<ListadoPersonasAdapter.ViewHolder>(){
+class ListadoPersonasAdapter (private val mListaPersonas : List<Personas>):
+     RecyclerView.Adapter<ListadoPersonasAdapter.ViewHolder>(){
         class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             val tviPersonaDepartamento : TextView
             val tviPersonaUserID : TextView
@@ -34,15 +33,13 @@ class ListadoPersonasAdapter (private val mListaPersonas : List<Personas>,
             val personas = mListaPersonas [position]
             holder.tviPersonaDepartamento.text = personas.departamento
             holder.tviPersonaUserID.text = personas.userid
-            holder.tviPersonaFechaCorte.text = "" + personas.fecha_corte
-
-            holder.itemView.setOnClickListener {
-                mOnItemClickListener(personas)
-            }
+            holder.tviPersonaFechaCorte.text =  personas.fecha_corte
         }
 
         override fun getItemCount(): Int {
             // Devolver el nro de items a mostrar
             return mListaPersonas.size
+
+
         }
 }
