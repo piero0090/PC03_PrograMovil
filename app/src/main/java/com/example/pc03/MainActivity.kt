@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             btnsincronizar.setEnabled(true)
         }
 
+        //crear otro activity
         //Boton VerData
         val btnVerData = findViewById<Button>(R.id.btnVerdatos)
         val ft = supportFragmentManager.beginTransaction()
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         ft.commit()
         btnVerData.setOnClickListener {
             // Cargar el fragment por defecto
-            setContentView(R.layout.datatool)
+            //setContentView(R.layout.datatool)
         }
     }
 

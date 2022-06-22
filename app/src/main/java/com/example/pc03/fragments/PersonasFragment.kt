@@ -72,7 +72,7 @@ class PersonasFragment: Fragment() {
                 if (!estaSincronizado) {
                     // Obtenemos la data del servicio externo
                     lista = withContext(Dispatchers.IO) {
-                        gestor.obtenerListaPersonasRoom()
+                        gestor.obtenerListaPersonasRoom(requireActivity().applicationContext)
                     }
 
                     // Guardamos los planetas obtenidos en el servicio en Room
@@ -111,4 +111,3 @@ class PersonasFragment: Fragment() {
     }
 
 
-}
