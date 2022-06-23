@@ -2,8 +2,9 @@ package com.example.pc03.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pc03.Constantes
@@ -39,7 +40,7 @@ class PersonasFragment: Fragment() {
 
             val sp = requireActivity().getSharedPreferences(
                 Constantes.NOMBRE_SP, Context.MODE_PRIVATE)
-
+/*
             GlobalScope.launch(Dispatchers.Main) {
                 val estaSincronizado = sp.getBoolean(Constantes.SP_ESTA_SINCRONIZADO,
                     false)
@@ -62,16 +63,21 @@ class PersonasFragment: Fragment() {
 
             }
 
-            /* el hardcodeo*
+
+*/
+            val fecha = "20215"
+            val txtSinData = view.findViewById<TextView>(R.id.txtSinData)
+
             var lista : List<Personas> = mutableListOf()
             lista = gestor.obtenerListaPersonasRoom(
-                requireContext().applicationContext)
+                requireContext().applicationContext, fecha)
 
-            gestor.guardarListPersonasRoom(
-                requireActivity().applicationContext,
-                lista)
-
-            cargarListaPersonas(lista)*/
+            if(lista.isNotEmpty()){
+                cargarListaPersonas(lista)
+                }
+            else{
+                txtSinData?.setVisibility(TextView.VISIBLE)
+            }
 
         }
 

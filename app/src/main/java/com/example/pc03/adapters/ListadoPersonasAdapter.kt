@@ -12,13 +12,13 @@ class ListadoPersonasAdapter (private val mListaPersonas : List<Personas>):
      RecyclerView.Adapter<ListadoPersonasAdapter.ViewHolder>(){
         class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             val tviPersonaDepartamento : TextView
-            val tviPersonaUserID : TextView
-            val tviPersonaFechaCorte: TextView
+            val tviCantidadDepa : TextView
+
 
             init {
                 tviPersonaDepartamento = view.findViewById(R.id.tviPersonaDepartamento)
-                tviPersonaUserID= view.findViewById(R.id.tviPersonaUserID)
-                tviPersonaFechaCorte= view.findViewById(R.id.tviPersonaFechaCorte)
+                tviCantidadDepa= view.findViewById(R.id.tviPersonasCantidad)
+
             }
         }
 
@@ -32,8 +32,7 @@ class ListadoPersonasAdapter (private val mListaPersonas : List<Personas>):
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val personas = mListaPersonas [position]
             holder.tviPersonaDepartamento.text = personas.departamento
-            holder.tviPersonaUserID.text = personas.userid
-            holder.tviPersonaFechaCorte.text =  personas.fecha_corte
+            holder.tviCantidadDepa.text = personas.cantidad.toString()
         }
 
         override fun getItemCount(): Int {

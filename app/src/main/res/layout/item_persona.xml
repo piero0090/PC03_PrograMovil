@@ -18,9 +18,10 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="28dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
             android:text="TextView"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -28,10 +29,12 @@
             app:layout_constraintVertical_bias="0.105" />
 
         <TextView
-            android:id="@+id/tviPersonaFechaCorte"
+            android:id="@+id/tviPersonasCantidad"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="40dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:text="TextView"
             android:textSize="20sp"
@@ -39,16 +42,6 @@
             app:layout_constraintVertical_bias="0.105"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tviPersonaUserID"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@id/tviPersonaDepartamento"
-            app:layout_constraintTop_toBottomOf="@+id/tviPersonaFechaCorte"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

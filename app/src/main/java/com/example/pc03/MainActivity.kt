@@ -81,12 +81,12 @@ class MainActivity : AppCompatActivity() {
                 try {
                     BufferedReader(bufferedreader).use { br->
                         var line : String?
-                        for (i in 2..10){
+                        for (i in 2..10000){
                            // progressBarComp.setVisibility(View.VISIBLE)
                             br.readLine().also { line=it }
                             val list : List<String> = line?.split(";")!!.toList()
                             val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
-                                list[5],list[6],list[7],list[8],list[9])
+                                list[5],list[6],list[7],list[8],list[9],0)
                             /*val personInfo = PersonaRoom(list[0], list[1],list[2],list[3],list[4],
                                 list[5],list[6],list[7],list[8],list[9],null)*/
                             AppDatabase.getInstance(this@MainActivity).getPersonasDao().insertPersonas(personInfo)

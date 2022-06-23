@@ -26,6 +26,8 @@ data class PersonaRoom(
     val ubi_geo : String,
     @ColumnInfo(name = "userid")
     val userid: String,
+    @ColumnInfo(name = "cantidad")
+    val cantidad : Int,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 

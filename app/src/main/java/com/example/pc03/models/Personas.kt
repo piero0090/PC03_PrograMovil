@@ -11,5 +11,6 @@ data class Personas (
     val sexo:String,
     val fecha_resultado : String,
     val ubi_geo : String,
-    val userid: String
+    val userid: String,
+    val cantidad : Int
     )
