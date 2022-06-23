@@ -27,6 +27,7 @@ class VerData : AppCompatActivity() {
         btnBuscar.setOnClickListener {
             ft.add(R.id.fcvSecciones, fragmentPersonas)
             ft.commit()
+            btnBuscar.setVisibility(View.GONE)
         }
     }
 }

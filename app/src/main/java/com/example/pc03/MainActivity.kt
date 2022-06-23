@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pc03.room.AppDatabase
@@ -22,12 +23,10 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
-
     private var progressbar: ProgressBar? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         progressbar = findViewById(R.id.ProgressBarComp)
         progressbar?.setVisibility(View.INVISIBLE)
         //var progressB: ProgressBar = findViewById(R.id.ProgressBarComp)

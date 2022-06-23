@@ -17,6 +17,7 @@ import kotlinx.coroutines.*
 
 class PersonasFragment: Fragment() {
 
+    private var fechaBuscar: TextView? =null
     private lateinit var mRviPersonas: RecyclerView
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class PersonasFragment: Fragment() {
             super.onViewCreated(view, savedInstanceState)
             mRviPersonas = view.findViewById(R.id.rviPersonas)
 
+            fechaBuscar = view.findViewById(R.id.txtFecha)
             val gestor = gestorPersonas()
 
             val sp = requireActivity().getSharedPreferences(
@@ -62,10 +64,8 @@ class PersonasFragment: Fragment() {
                 }
 
             }
-
-
 */
-            val fecha = "20215"
+            val fecha = "20220110"
             val txtSinData = view.findViewById<TextView>(R.id.txtSinData)
 
             var lista : List<Personas> = mutableListOf()

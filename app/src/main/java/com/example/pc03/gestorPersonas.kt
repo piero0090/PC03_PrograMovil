@@ -1,6 +1,8 @@
 package com.example.pc03
 
 import android.content.Context
+import android.view.View
+import android.widget.TextView
 import com.example.pc03.models.Personas
 import com.example.pc03.room.AppDatabase
 import com.example.pc03.room.Dao.PersonaRoomDAO
@@ -9,10 +11,11 @@ import com.example.pc03.room.Models.PersonaRoom
 class gestorPersonas {
 
     fun obtenerListaPersonasRoom(context: Context, fecha : String): List<Personas>{
+
+
         /*val daoPersonas: PersonaRoomDAO = AppDatabase.getInstance(
             context).getPersonas(fecha)
         println("hola")*/
-
         val daoPersonas: PersonaRoomDAO = AppDatabase.getInstance(context).getPersonasDao()
 
         val listaPersonasRoom= daoPersonas.getDepartmentos(fecha)
