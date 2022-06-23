@@ -40,7 +40,7 @@ class PersonasFragment: Fragment() {
             val sp = requireActivity().getSharedPreferences(
                 Constantes.NOMBRE_SP, Context.MODE_PRIVATE)
 
-           /* GlobalScope.launch(Dispatchers.Main) {
+            GlobalScope.launch(Dispatchers.Main) {
                 val estaSincronizado = sp.getBoolean(Constantes.SP_ESTA_SINCRONIZADO,
                     false)
                 var lista : List<Personas> = mutableListOf()
@@ -60,8 +60,9 @@ class PersonasFragment: Fragment() {
                     cargarListaPersonas(lista)
                 }
 
-            }*/
+            }
 
+            /* el hardcodeo*
             var lista : List<Personas> = mutableListOf()
             lista = gestor.obtenerListaPersonasRoom(
                 requireContext().applicationContext)
@@ -70,7 +71,8 @@ class PersonasFragment: Fragment() {
                 requireActivity().applicationContext,
                 lista)
 
-            cargarListaPersonas(lista)
+            cargarListaPersonas(lista)*/
+
         }
 
         private fun cargarListaPersonas(lista: List<Personas>) {
