@@ -2,7 +2,6 @@ package com.example.pc03
 
 import android.os.Bundle
 import android.view.Gravity
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +14,7 @@ class VerData : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.fragment_personas)
+        setContentView(R.layout.datatool)
 
         //val toast = Toast.makeText(this, "Añade una fecha", Toast.LENGTH_SHORT)
         //toast.show()
@@ -23,12 +22,5 @@ class VerData : AppCompatActivity() {
          val ft = supportFragmentManager.beginTransaction()
          ft.add(R.id.fcvSecciones, fragmentPersonas)
          ft.commit()
-
-
-        //Btn Buscar
-        val btnBuscar= findViewById<Button>(R.id.btnBuscar)
-        btnBuscar.setOnClickListener{
-
-        }
     }
 }
