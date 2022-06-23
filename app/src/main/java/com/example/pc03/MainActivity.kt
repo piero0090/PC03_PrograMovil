@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     BufferedReader(bufferedreader).use { br->
                         var line : String?
-                        for (i in 2..10000){
+                        for (i in 2..10){
                            // progressBarComp.setVisibility(View.VISIBLE)
                             br.readLine().also { line=it }
                             val list : List<String> = line?.split(";")!!.toList()

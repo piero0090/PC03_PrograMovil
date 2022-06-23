@@ -40,7 +40,7 @@ class PersonasFragment: Fragment() {
             val sp = requireActivity().getSharedPreferences(
                 Constantes.NOMBRE_SP, Context.MODE_PRIVATE)
 
-            GlobalScope.launch(Dispatchers.Main) {
+           /* GlobalScope.launch(Dispatchers.Main) {
                 val estaSincronizado = sp.getBoolean(Constantes.SP_ESTA_SINCRONIZADO,
                     false)
                 var lista : List<Personas> = mutableListOf()
@@ -59,23 +59,18 @@ class PersonasFragment: Fragment() {
                         requireContext().applicationContext)
                     cargarListaPersonas(lista)
                 }
-            }
 
-            /*
-            var lista1 : List<Personas> = mutableListOf()
-            var lista2 = mutableListOf<Personas>()
-            val temp = Personas ("1","2","3","4", "5"
-            , "6", "7", "8", "9", "10")
+            }*/
 
-            val temp2 = Personas ("1","2","3","4", "5"
-                , "6", "7", "8", "9", "10")
+            var lista : List<Personas> = mutableListOf()
+            lista = gestor.obtenerListaPersonasRoom(
+                requireContext().applicationContext)
 
-            lista1
-            lista1.add(temp2)
+            gestor.guardarListPersonasRoom(
+                requireActivity().applicationContext,
+                lista)
 
-            cargarListaPersonas(lista1)
-            */
-
+            cargarListaPersonas(lista)
         }
 
         private fun cargarListaPersonas(lista: List<Personas>) {
